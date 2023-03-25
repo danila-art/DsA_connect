@@ -1,7 +1,8 @@
 # Файл регистрации модератора взят на основе модуля registration_user
 import csv
 from registration_user import get_login, get_password, get_passport_number_and_series, get_surname, get_name, get_patronymic, get_birthday
-
+import time
+import admin
 
 # get_login < - Создание логина
 # get_password < - Создание пароля
@@ -13,7 +14,7 @@ number_fhone = None
 # get_birthday < - Ввод даты дня рождения
 tariff_plan = None
 balance = 0
-rang = "moderator"
+rang = "admin"
 
 
 def create_moderator():
@@ -38,8 +39,10 @@ def create_moderator():
         "balance": balance,
         "rang": rang
     }
-    print(dict_moderator)
-    for el, value in dict_moderator.items():
-        print(f"Ключ: {el}  Значение: {value}")
-
-create_moderator()
+    with open("./inner_file_py/user.csv", "a", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=dict_moderator)
+        writer.writerow(dict_moderator)
+    time.sleep(1)
+    print("Вы успешно добавили модератора, возвращаюсь в главное меню Администратора...")
+    time.sleep(1)
+    admin.system_managment_admin()

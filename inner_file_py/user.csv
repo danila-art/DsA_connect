@@ -1,1 +1,7 @@
 login,password,number_fhone,passport_number_and_series,surname,name,patronymic,birthday,tariff_plan,balance,rang
+danila-art,123123,,1220851672,Сивов,Данила,Алексеевич,28.12.2000,,0,admin
+
+Ivanov-login,209156,,1206862872,Иванов,Иван,Иванович,25.10.1988,,0,user
+
+user-login,user-password,,1202872910,Сергеев,Иван,Владиленович,11.11.1981,,0,user
+

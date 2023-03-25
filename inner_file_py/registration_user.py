@@ -1,4 +1,9 @@
 # Главный фал регистрации нового абонента
+import time
+import csv
+import main as main_file
+
+
 def main_get_data():
     login = get_login()
     password = get_password()
@@ -11,17 +16,45 @@ def main_get_data():
     tariff_plan = None
     balance = 0
     rang = "user"
-    print(login, password)
+    data_user = {
+        "login": login,
+        "password": password,
+        "number_fhone":  number_fhone,
+        "passport_number_and_series": passport_number_and_series,
+        "surname": surname,
+        "name": name,
+        "patronymic": patronymic,
+        "birthday": birthday,
+        "tariff_plan": tariff_plan,
+        "balance": balance,
+        "rang": rang
+    }
+    with open("./inner_file_py/user.csv", "a", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=data_user)
+        writer.writerow(data_user)
+    time.sleep(1)
+    print("Вы успешно зарегистрировались, возвращаюсь в главное меню Администратора...")
+    time.sleep(1)
+    main_file.main_no_cowsay()
 # Получение логина
+
+
 def get_login():
     while True:
         login = input("Введите login: ")
         if (login == ''):
             print("Поле не может быть пустым, введите login: ")
         else:
-            return login
-            break
-        
+            with open("./inner_file_py/user.csv", "r", encoding="utf-8") as file:
+                read = csv.DictReader(file)
+                for element in read:
+                    if (element['login'] == login):
+                        print(
+                            "Приносим извинения, но такой логин уже существует, попробуйте ещё раз")
+                    else:
+                        return login
+                        break
+
 
 # Получения пароля
 def get_password():
@@ -32,7 +65,7 @@ def get_password():
         else:
             return password
             break
-        
+
 
 # Получение паспортных данных
 def get_passport_number_and_series():
@@ -45,7 +78,7 @@ def get_passport_number_and_series():
         else:
             return passport_number_and_series
             break
-        
+
 
 # Получение Фамилии
 def get_surname():
@@ -56,7 +89,7 @@ def get_surname():
         else:
             return surname
             break
-       
+
 
 # Получение Имя
 def get_name():
@@ -67,7 +100,7 @@ def get_name():
         else:
             return name
             break
-        
+
 
 # Поулчение Отчества
 def get_patronymic():
@@ -79,7 +112,7 @@ def get_patronymic():
         else:
             return patronymic
             break
-        
+
 
 # Получение даты дня рождения
 def get_birthday():
@@ -90,5 +123,3 @@ def get_birthday():
         else:
             return birthday
             break
-        
-
