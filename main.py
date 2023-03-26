@@ -32,30 +32,30 @@ def main_select_value(user_value):
         view_tarif_plan.view_tarif_plan_user()
 
     elif (user_value == 2):
-        print(f"Вы выбрали: ({arrValue[2]})")
+        print(f"Вы выбрали: ({arrValue[1]})")
         # Запуск модуля
 
     elif (user_value == 3):
-        print(f"Вы выбрали: ({arrValue[3]})")
+        print(f"Вы выбрали: ({arrValue[2]})")
         # Запуск модуля
         print("Запуск файла Регистрации...")
         time.sleep(1)
         registration_user.main_get_data()
 
     elif (user_value == 4):
-        print(f"Вы выбрали: ({arrValue[4]})")
+        print(f"Вы выбрали: ({arrValue[3]})")
         # Запуск модуля
         print("Запуск авторизации...")
         time.sleep(1)
         autorization.autorizationUser()
     elif (user_value == 5):
-        print(f"Вы выбрали: ({arrValue[5]})")
+        print(f"Вы выбрали: ({arrValue[4]})")
         # Запуск модуля
         print("Запуск руководства...")
         time.sleep(1)
         read_text_file.read_guide()
     elif (user_value == 6):
-        print(f"Вы выбрали: ({arrValue[6]})")
+        print(f"Вы выбрали: ({arrValue[5]})")
         # Запуск модуля
 
 
