@@ -33,7 +33,7 @@ def main_get_data():
         writer = csv.DictWriter(file, fieldnames=data_user)
         writer.writerow(data_user)
     time.sleep(1)
-    print("Вы успешно зарегистрировались, возвращаюсь в главное меню Администратора...")
+    print("Вы успешно зарегистрировались, возвращаюсь в главное меню...")
     time.sleep(1)
     main_file.main_no_cowsay()
 # Получение логина

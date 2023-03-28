@@ -26,8 +26,8 @@ def autorizationUser():  # Главная функция
                     user_accaunt.get_user(login, password)
                     search = True
                     break
-                else:
-                    search = False
+            else:
+                search = False
     if (search == False):
         print("Пользователь не найден, попробуйте ещё раз...")
         autorizationUser()

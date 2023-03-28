@@ -3,6 +3,7 @@ import time
 import registration_admin
 import add_tarif_plan
 import view_tarif_plan
+import add_number_fhone
 
 def system_managment_admin():
     adminGetValue = system_hello_admin()
@@ -29,7 +30,7 @@ def system_managment_admin():
     elif (adminGetValue == 5):
         print("Вы выбрали: Добавить новые номера телефонов.")
         time.sleep(1)
-
+        add_number_fhone.add_number_fhone()
         # Инструкция при выбранном значении
 
 
