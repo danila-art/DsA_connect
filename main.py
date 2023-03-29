@@ -7,6 +7,7 @@ import read_text_file
 import registration_user
 import view_tarif_plan
 import autorization
+import view_number_fhone
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -34,7 +35,9 @@ def main_select_value(user_value):
     elif (user_value == 2):
         print(f"Вы выбрали: ({arrValue[1]})")
         # Запуск модуля
-
+        print('Запуск просмотра номеров телефона')
+        time.sleep(1)
+        view_number_fhone.view_number()
     elif (user_value == 3):
         print(f"Вы выбрали: ({arrValue[2]})")
         # Запуск модуля

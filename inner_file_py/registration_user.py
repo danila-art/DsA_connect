@@ -29,7 +29,7 @@ def main_get_data():
         "balance": balance,
         "rang": rang
     }
-    with open("./inner_file_py/user.csv", "a", encoding="utf-8") as file:
+    with open("./inner_file_py/user.csv", "a", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=data_user)
         writer.writerow(data_user)
     time.sleep(1)

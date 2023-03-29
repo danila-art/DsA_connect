@@ -39,7 +39,7 @@ def create_moderator():
         "balance": balance,
         "rang": rang
     }
-    with open("./inner_file_py/user.csv", "a", encoding="utf-8") as file:
+    with open("./inner_file_py/user.csv", "a", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=dict_moderator)
         writer.writerow(dict_moderator)
     time.sleep(1)

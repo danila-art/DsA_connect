@@ -13,11 +13,9 @@ def add_number_fhone():
             break
         elif(number_fhone.isnumeric() == False):
             print("Вы ввели не число")
-        elif(len(number_fhone) < 11):
-            print("В вашем введенном номере меньше 11 символов, номер недействиителен. Попробуйте еще раз")
+        elif(len(number_fhone) < 11 and len(number_fhone) > 11):
+            print("В вашем введенном номере меньше или больше 11 символов, номер недействиителен. Попробуйте еще раз")
         else:
-            with open("./inner_file_py/number_fhone.csv", 'a', encoding='utf-8') as file:
+            with open("./inner_file_py/number_fhone.csv", 'a', encoding='utf-8', newline="") as file:
                 write = csv.writer(file)
-                write.writerow(number_fhone)
-
-add_number_fhone()
+                write.writerow(number_fhone.split(','))

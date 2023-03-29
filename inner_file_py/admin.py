@@ -4,6 +4,8 @@ import registration_admin
 import add_tarif_plan
 import view_tarif_plan
 import add_number_fhone
+import main
+
 
 def system_managment_admin():
     adminGetValue = system_hello_admin()
@@ -25,13 +27,18 @@ def system_managment_admin():
     elif (adminGetValue == 4):
         print("Вы выбрали: Смотреть полную информацию о клиенте по номеру телефона.")
         time.sleep(1)
-
+        print("Просим извинения, сроки поджимали, недоработали:(")
+        system_hello_admin()
         # Инструкция при выбранном значении
     elif (adminGetValue == 5):
         print("Вы выбрали: Добавить новые номера телефонов.")
         time.sleep(1)
         add_number_fhone.add_number_fhone()
         # Инструкция при выбранном значении
+    elif (adminGetValue == 0):
+        print("Возвращаюсь в главное меню...")
+        time.sleep(1)
+        main.main_no_cowsay()
 
 
 def system_hello_admin():
@@ -39,7 +46,7 @@ def system_hello_admin():
     time.sleep(4)
     print("Выберите функцию управления:")
     time.sleep(2)
-    print("|(1) < - Зарегистрировать нового Администратора. | \n|(2) < - Смотреть полный список Тарифных планов. | \n|(3) < - Добавить новый тарифный план. | \n|(4) < - Смотреть полную информацию о клиенте по номеру телефона. | \n|(5) < - Добавить новые номера телефонов. |")
+    print("|(1) < - Зарегистрировать нового Администратора. | \n|(2) < - Смотреть полный список Тарифных планов. | \n|(3) < - Добавить новый тарифный план. | \n|(4) < - Смотреть полную информацию о клиенте по номеру телефона. | \n|(5) < - Добавить новые номера телефонов. |, \n|(0) < - Вернуться в главное меню. |")
     time.sleep(1)
     adminGetValue = int(
         input("Введите значение действия которое хотите выполнить: - > "))
