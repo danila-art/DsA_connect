@@ -37,7 +37,7 @@ class user():
         if (self.user_number_fhone == ''):
             print(f"Номер телефона: нет")
         else:
-            print(f"Номер телефона: {self.user_tariff_plan}")
+            print(f"Номер телефона: {self.user_number_fhone}")
         if (self.user_tariff_plan == ''):
             print(f"Тарифный план: нет")
         else:
@@ -46,10 +46,8 @@ class user():
             f"-----------------------\nБаланс: {self.user_balance}\n-----------------------")
 
     def system_managment(self):
-        if (self.user_number_fhone == ""):
-            print("| 1 - Привязать номер телефона. |")
-        if (self.user_tariff_plan == ""):
-            print("| 2 - Подключить тарифный план. |")
+        print("| 1 - Привязать номер телефона. |")
+        print("| 2 - Подключить тарифный план. |")
         print("| 3 - Пополнить баланс. |")
         print("| 0 - Выйти в главное меню |")
 
@@ -90,18 +88,49 @@ class user():
                 fieldname = ["login", "password", "number_fhone", "passport_number_and_series",
                              "surname", "name", "patronymic", "birthday", "tariff_plan", "balance", "rang"]
                 for element in all_dict_user:
-                    if(element['login'] == self.user_login):
-                        element.update({'number_fhone' : self.user_number_fhone})
+                    if (element['login'] == self.user_login):
+                        element.update(
+                            {'number_fhone': self.user_number_fhone})
                 with open("./inner_file_py/user.csv", 'w', encoding='utf-8', newline="") as file:
                     write = csv.DictWriter(file, fieldnames=fieldname)
                     write.writeheader()
                     for el in all_dict_user:
                         write.writerow(el)
                 print("Вы успешно добавили номер...")
-                main_work_class(self.user_login, self.user_password)
+                get_user(self.user_login, self.user_password)
                 break
-                
 
+    def add_tarif_plan(self):
+        arr_name_tarif = []
+        all_dict_user = []
+        fieldname = ["login", "password", "number_fhone", "passport_number_and_series",
+                     "surname", "name", "patronymic", "birthday", "tariff_plan", "balance", "rang"]
+
+        print("Выберите тарифный план")
+        with open("./inner_file_py/tariff_plans.csv", 'r', encoding='utf-8') as file:
+            file = csv.DictReader(file)
+            i = 0
+            for element in file:
+                print(f"{i} -> {element['name_tarif']}")
+                arr_name_tarif.append(element['name_tarif'])
+                i += 1
+        select_tarif = int(input("Введите номер тарифного плана: "))
+        with open("./inner_file_py/user.csv", 'r', encoding='utf-8', newline="") as file:
+            dict_reader = csv.DictReader(file)
+            for el in dict_reader:
+                all_dict_user.append(el)
+        for element in all_dict_user:
+            if (element['login'] == self.user_login):
+                element.update(
+                    {'tariff_plan': arr_name_tarif[select_tarif]})
+        with open("./inner_file_py/user.csv", 'w', encoding='utf-8', newline="") as file:
+            write = csv.DictWriter(file, fieldnames=fieldname)
+            write.writeheader()
+            for el in all_dict_user:
+                write.writerow(el)
+        print("Вы успешно добавили Тарифный план...")
+        get_user(self.user_login, self.user_password)
+        
 
 def get_user(login, password):
     with open("./inner_file_py/user.csv", 'r', encoding="utf-8") as file:
@@ -134,6 +163,8 @@ def main_work_class(user):
         pass
     elif (user_select == 2):
         # Запуск метода класса
+        print("Запуск подключения тарифного плана")
+        user.add_tarif_plan()
         pass
     elif (user_select == 3):
         # Запуск метода класса
